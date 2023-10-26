@@ -21,8 +21,8 @@ public class TransmiControl : MonoBehaviour
     [SerializeField] AudioClip accelerateAudioClip;
 
 
-    AudioSource transmiAudioSource; 
-    bool isPlaying = false; 
+    AudioSource transmiAudioSource;
+    //bool isPlaying = false;
 
     Rigidbody rb;
     UnityEngine.Vector3 moveVector = new UnityEngine.Vector3(0, 0, 0);
@@ -33,7 +33,7 @@ public class TransmiControl : MonoBehaviour
 
     void Start()
     {
-        transmiAudioSource= GetComponent<AudioSource>();
+        transmiAudioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
 
         if (numberOfWagons > 0)
@@ -46,7 +46,7 @@ public class TransmiControl : MonoBehaviour
 
     private void initializeWagons(int numberOfWagons)
     {
-        GameObject parentWagon = gameObject; 
+        GameObject parentWagon = gameObject;
 
 
         for (int i = 0; i < numberOfWagons; i++)
@@ -55,28 +55,29 @@ public class TransmiControl : MonoBehaviour
 
             if (i == numberOfWagons - 1)
             {
-                tempWagon = Instantiate(busBackPrefab, parentWagon.transform);
-                tempWagon.transform.localPosition = new UnityEngine.Vector3(
-                busBackSpawnOffset.x,
-                tempWagon.transform.localPosition.y,
-                tempWagon.transform.localPosition.z
+                UnityEngine.Vector3 spawnPoint = new UnityEngine.Vector3(
+                parentWagon.transform.position.x + busBackSpawnOffset.x,
+                transform.localPosition.y,
+                transform.localPosition.z
                 );
-                initializeSpringJoints(tempWagon,parentWagon);
-                
+                //Debug.Log("last Wagon pos: " + spawnPoint);
+                tempWagon = Instantiate(busBackPrefab, spawnPoint, transform.rotation);
+                initializeConfigurableJoint(tempWagon, parentWagon);
+
             }
             else
             {
-                tempWagon = Instantiate(busMiddlePrefab, parentWagon.transform);
-                tempWagon.transform.localPosition = new UnityEngine.Vector3(
-                    busMiddleSpawnOffset.x,
-                    tempWagon.transform.localPosition.y,
-                    tempWagon.transform.localPosition.z
+                UnityEngine.Vector3 spawnPoint2 = new UnityEngine.Vector3(
+                parentWagon.transform.position.x + busMiddleSpawnOffset.x,
+                transform.localPosition.y,
+                transform.localPosition.z
                 );
-                initializeSpringJoints(tempWagon, parentWagon);
-                
+                //Debug.Log("middle " + i + " pos: " + spawnPoint2);
+                tempWagon = Instantiate(busMiddlePrefab, spawnPoint2, transform.rotation);
+                initializeConfigurableJoint(tempWagon, parentWagon);
             }
 
-            parentWagon = tempWagon; 
+            parentWagon = tempWagon;
         }
     }
 
@@ -84,11 +85,36 @@ public class TransmiControl : MonoBehaviour
     {
         SpringJoint springJoint = pWagon.GetComponent<SpringJoint>();
         springJoint.autoConfigureConnectedAnchor = false;
-        springJoint.anchor = new UnityEngine.Vector3(6.52f,1f,0f);
-        springJoint.connectedAnchor = new UnityEngine.Vector3(-7.55f,1f,0f);
+        springJoint.anchor = new UnityEngine.Vector3(6.52f, 1f, 0f);
+        springJoint.connectedAnchor = new UnityEngine.Vector3(-7.55f, 1f, 0f);
         springJoint.spring = 200;
-        springJoint.damper = 1; 
+        springJoint.damper = 1;
         springJoint.connectedBody = pParent.GetComponent<Rigidbody>();
+    }
+
+    private void initializeConfigurableJoint(GameObject pWagon, GameObject pParent)
+    {
+        ConfigurableJoint configJoint = pParent.transform.AddComponent<ConfigurableJoint>();
+        configJoint.anchor = new UnityEngine.Vector3(-7.8f, 1.89f, 0f);
+        configJoint.autoConfigureConnectedAnchor = false;
+        configJoint.connectedAnchor = new UnityEngine.Vector3(3.66f, 1.87f, 0f);
+        configJoint.connectedBody = pWagon.GetComponent<Rigidbody>();
+
+        configJoint.xMotion = UnityEngine.ConfigurableJointMotion.Locked; 
+        configJoint.yMotion = UnityEngine.ConfigurableJointMotion.Locked; 
+        configJoint.zMotion = UnityEngine.ConfigurableJointMotion.Locked;
+
+        configJoint.angularXMotion = UnityEngine.ConfigurableJointMotion.Locked;
+        configJoint.angularZMotion = UnityEngine.ConfigurableJointMotion.Locked;
+
+        UnityEngine.SoftJointLimit limits = new UnityEngine.SoftJointLimit
+        {
+            limit = 45f,
+            bounciness = 0,
+            contactDistance = 0
+        };
+
+        configJoint.angularYLimit = limits; 
     }
 
     private void FixedUpdate()
@@ -99,32 +125,33 @@ public class TransmiControl : MonoBehaviour
             moveVector.x = speed * Input.GetAxis("Vertical");
             moveVector.y = GetComponent<Rigidbody>().velocity.y;
             moveVector.z = GetComponent<Rigidbody>().velocity.z;
+            Debug.Log("speed" + speed);
 
             //rb.velocity = moveVector;
             rb.AddRelativeForce(moveVector.x, 0, 0);
 
-            if(!transmiAudioSource.isPlaying)
+   /*          if (!transmiAudioSource.isPlaying)
             {
                 //transmiAudioSource.volume =0.4f;
                 //transmiAudioSource.PlayOneShot(accelerateAudioClip);
-                isPlaying = true; 
-            }
-            
+                //isPlaying = true;
+            } */
+
         }
         if (Math.Abs(Input.GetAxis("Horizontal")) > 0)
         {
             angularVector.x = GetComponent<Rigidbody>().angularVelocity.x;
             angularVector.y = rotationSpeed * Input.GetAxis("Horizontal");
             angularVector.z = GetComponent<Rigidbody>().angularVelocity.z;
-
+            Debug.Log("roation" + rotationSpeed);
 
             rb.angularVelocity = angularVector;
-
-            if(!transmiAudioSource.isPlaying)
+/* 
+            if (!transmiAudioSource.isPlaying)
             {
                 transmiAudioSource.PlayOneShot(accelerateAudioClip);
-                isPlaying = true; 
-            }
+                isPlaying = true;
+            } */
         }
     }
 

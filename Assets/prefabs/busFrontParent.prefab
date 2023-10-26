@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6723064484120242171}
   - component: {fileID: 5920948362350847640}
   - component: {fileID: 747307077575257756}
-  - component: {fileID: 7555175031565425292}
+  - component: {fileID: 4213430442130108691}
   m_Layer: 0
   m_Name: busFront
   m_TagString: Untagged
@@ -84,27 +84,102 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7555175031565425292
-BoxCollider:
+--- !u!82 &4213430442130108691
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2732460147252612984}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f9bed855c2eb9d945a9ec739d6d19f0f, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
     serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
     serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.000001, y: 6.6, z: 22.200006}
-  m_Center: {x: 0, y: 3.3, z: -1.4000005}
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6527823690590562138
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +191,8 @@ GameObject:
   - component: {fileID: 3385010905924284244}
   - component: {fileID: 7056812207159673664}
   - component: {fileID: 4014856715277742404}
+  - component: {fileID: 4912870587741425878}
+  - component: {fileID: 2750487540070914475}
   m_Layer: 0
   m_Name: busFrontParent
   m_TagString: Untagged
@@ -164,7 +241,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &4014856715277742404
 MonoBehaviour:
@@ -178,11 +255,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245b7a374ea9eed4eb8b11057435f296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 100
   rotationSpeed: 10
-  numberOfWagons: 10
+  numberOfWagons: 2
   forceMultiply: 1
   busMiddlePrefab: {fileID: 4369036553224556510, guid: fc4acb4a5c5d7b34d8bfedfa8f64b76f, type: 3}
   busBackPrefab: {fileID: 7400162858327824933, guid: 3d1e3d5aa854a3c43bf80d15f29fa0ce, type: 3}
-  busMiddleSpawnOffset: {x: -10.89, y: 0, z: 0}
-  busBackSpawnOffset: {x: -13.94, y: 0, z: 0}
+  busMiddleSpawnOffset: {x: -10.88, y: 0, z: 0}
+  busBackSpawnOffset: {x: -14, y: 0, z: 0}
+  accelerateAudioClip: {fileID: 8300000, guid: a070915c4a21c484ba854c1d0a43de96, type: 3}
+--- !u!114 &4912870587741425878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6527823690590562138}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 463ce5becd8ad9441af644ea2bf30bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 8066676672848378873, guid: f37d380d1d7a1e9429fadb5e1443f64c, type: 3}
+  explosionScale: 3
+  numExplosions: 3
+  explosionRadius: 1
+  lifePoints: 1
+  boom: {fileID: 8300000, guid: 6c581348ef5e28347a3dae1d4b06fe0b, type: 3}
+  lifePointsZero:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4912870587741425878}
+        m_TargetAssemblyTypeName: transmiFX, Assembly-CSharp
+        m_MethodName: startParticleSystem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &2750487540070914475
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6527823690590562138}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.94, y: 4, z: 2.92}
+  m_Center: {x: -0.19, y: 2, z: 0}

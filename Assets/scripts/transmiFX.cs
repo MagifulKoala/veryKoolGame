@@ -54,7 +54,7 @@ public class transmiFX : MonoBehaviour
         foreach (var explosion in explosionPrefabs)
         {
             explosion.GetComponent<ParticleSystem>().Play();
-            audioTransmi.PlayOneShot(boom);
+            //audioTransmi.PlayOneShot(boom);
         }
     }
 }
