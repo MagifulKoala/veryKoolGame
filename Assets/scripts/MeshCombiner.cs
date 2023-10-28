@@ -1,34 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Text.RegularExpressions;
 
 public class MeshCombiner : MonoBehaviour
 {
 
-    [SerializeField] private List<Mesh> sources;
+    [SerializeField] private MeshFilter headTarget;
+    [SerializeField] private MeshFilter torsoTarget;
+    [SerializeField] private MeshFilter upperArmLTarget;
+    [SerializeField] private MeshFilter upperArmRTarget;
+    [SerializeField] private MeshFilter thighLTarget;
+    [SerializeField] private MeshFilter thighRTarget;
+    [SerializeField] private MeshFilter lowerArmLTarget;
+    [SerializeField] private MeshFilter lowerArmRTarget;
+    [SerializeField] private MeshFilter handLTarget;
+    [SerializeField] private MeshFilter handRTarget;
+    [SerializeField] private MeshFilter footLTarget;
+    [SerializeField] private MeshFilter footRTarget;
+    [SerializeField] private MeshFilter calfLTarget;
+    [SerializeField] private MeshFilter calfRTarget;
     [SerializeField] private SkinnedMeshRenderer skin;
+    [SerializeField] private TextAsset jsonSkin;
 
-    [ContextMenu("Mesh Combiner")]
-    // Start is called before the first frame update
-  private void CombineMeshes() {
+    public IEnumerator Start()
+    {
+        Skin skinData = Skin.CreateFromJSON(jsonSkin);
 
-    var combine = new CombineInstance[sources.Count];
-    for (int i = 0; i < sources.Count; i++) {
-      GameObject obj = new GameObject();
-      MeshFilter source = obj.AddComponent<MeshFilter>();
-      source.mesh = sources[i];
-      combine[i].mesh = source.sharedMesh;
-      combine[i].transform = source.transform.localToWorldMatrix;
-      DestroyImmediate(obj);
+        List<string> keys = skinData.GetAllKeys();
+
+        AsyncOperationHandle<IList<Mesh>> handle = Addressables.LoadAssetsAsync<Mesh>(
+          keys,
+          addressable =>
+          {
+              Regex headRegex = new("Head", RegexOptions.IgnoreCase);
+              Debug.Log(headRegex.IsMatch(addressable.ToString()));
+          }, Addressables.MergeMode.Union, false);
+
+        yield return handle;
     }
-
-    var mesh = new Mesh();
-    mesh.CombineMeshes(combine);
-    skin.sharedMesh = mesh;
-
-  }
-
-  void Start() {
-    CombineMeshes();
-  }
 }

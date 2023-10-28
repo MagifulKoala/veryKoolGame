@@ -1,0 +1,16 @@
+{
+    "head": "Skins/Furro/FurroHead.fbx[FurroHead]",
+    "torso": "Skins/Teuton/TeutonTorso.fbx[TeutonTorso]",
+    "thighL": "Skins/Test/TestThighL.fbx[TestThighL]",
+    "thighR": "Skins/Test/TestThighR.fbx[TestThighR]",
+    "upperArmL": "Skins/Lele/LeleUpperArmL.fbx[LeleUpperArmL]",
+    "upperArmR": "Skins/Lele/LeleUpperArmR.fbx[LeleUpperArmR]",
+    "lowerArmL": "Skins/Test/TestLowerArmL.fbx[TestLowerArmL]",
+    "lowerArmR": "Skins/Test/TestLowerArmR.fbx[TestLowerArmR]",
+    "handR": "Skins/Lele/LeleHandR.fbx[LeleHandR]",
+    "handL": "Skins/Test/TestHandL.fbx[TestHandL]",
+    "calfR": "Skins/Test/TestCalfR.fbx[TestCalfR]",
+    "calfL": "Skins/Test/TestCalfL.fbx[TestCalfL]",
+    "footR": "Skins/Test/TestFootR.fbx[TestFootR]",
+    "footL": "Skins/Test/TestFootL.fbx[TestFootL]"
+}

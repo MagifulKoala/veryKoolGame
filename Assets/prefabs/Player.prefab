@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9162633487571376146}
   - component: {fileID: 7756167318710087411}
   - component: {fileID: 2636620083282502071}
+  - component: {fileID: 2721918187470609859}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -115,6 +116,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2721918187470609859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71391209160292687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19d094f7f4e821459e7303729a68066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headTarget: {fileID: 0}
+  torsoTarget: {fileID: 0}
+  upperArmLTarget: {fileID: 0}
+  upperArmRTarget: {fileID: 0}
+  thighLTarget: {fileID: 0}
+  thighRTarget: {fileID: 0}
+  lowerArmLTarget: {fileID: 0}
+  lowerArmRTarget: {fileID: 0}
+  handLTarget: {fileID: 0}
+  handRTarget: {fileID: 0}
+  footLTarget: {fileID: 0}
+  footRTarget: {fileID: 0}
+  calfLTarget: {fileID: 0}
+  calfRTarget: {fileID: 0}
+  skin: {fileID: 0}
+  jsonSkin: {fileID: 4900000, guid: ea43ad62915ef904e8ae5e439f123338, type: 3}
 --- !u!1 &248516312377553182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,16 +1862,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19d094f7f4e821459e7303729a68066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sources:
-  - {fileID: -7324977147583197003, guid: 77e94eeeb4f9f0b43b406f75942976d0, type: 3}
-  - {fileID: -5085092929947398175, guid: 4e957ccca6fbd724e88a142c9b7e46fc, type: 3}
-  - {fileID: -5603808131402441291, guid: 92583998cd7c47448882625851026cdb, type: 3}
-  - {fileID: -1986901859940686779, guid: 6f51326aac6efac48b928949cb73fbeb, type: 3}
-  - {fileID: 2743934793444973938, guid: dacb48646d6b6b64f99d1adafb480c94, type: 3}
-  - {fileID: -4578071519907977600, guid: f220d21011484e74fbbcda93c6aeb262, type: 3}
-  - {fileID: 2287376929199909388, guid: 87d81446f133ad24c9d57c9056923e74, type: 3}
-  - {fileID: -8697746089217210828, guid: 1d4b1b6fde8fad94d893f0028b1417e4, type: 3}
+  headTarget: {fileID: 0}
+  torsoTarget: {fileID: 0}
+  upperArmLTarget: {fileID: 0}
+  upperArmRTarget: {fileID: 0}
+  thighLTarget: {fileID: 0}
+  thighRTarget: {fileID: 0}
+  lowerArmLTarget: {fileID: 0}
+  lowerArmRTarget: {fileID: 0}
+  handLTarget: {fileID: 0}
+  handRTarget: {fileID: 0}
+  footLTarget: {fileID: 0}
+  footRTarget: {fileID: 0}
+  calfLTarget: {fileID: 0}
+  calfRTarget: {fileID: 0}
   skin: {fileID: 0}
+  jsonSkin: {fileID: 0}
 --- !u!1 &6655869293986483025
 GameObject:
   m_ObjectHideFlags: 0
