@@ -23,7 +23,6 @@ public class MeshCombiner : MonoBehaviour
     [SerializeField] private MeshFilter footRTarget;
     [SerializeField] private MeshFilter calfLTarget;
     [SerializeField] private MeshFilter calfRTarget;
-    [SerializeField] private SkinnedMeshRenderer skin;
     [SerializeField] private TextAsset jsonSkin;
 
     public IEnumerator Start()
@@ -37,7 +36,81 @@ public class MeshCombiner : MonoBehaviour
           addressable =>
           {
               Regex headRegex = new("Head", RegexOptions.IgnoreCase);
-              Debug.Log(headRegex.IsMatch(addressable.ToString()));
+              Regex torsoRegex = new("Torso", RegexOptions.IgnoreCase);
+              Regex handLRegex = new("HandL", RegexOptions.IgnoreCase);
+              Regex handRRegex = new("HandR", RegexOptions.IgnoreCase);
+              Regex calfLRegex = new("CalfL", RegexOptions.IgnoreCase);
+              Regex calfRRegex = new("CalfR", RegexOptions.IgnoreCase);
+              Regex thighLRegex = new("ThighL", RegexOptions.IgnoreCase);
+              Regex thighRRegex = new("ThighR", RegexOptions.IgnoreCase);
+              Regex upperArmLRegex = new("UpperArmL", RegexOptions.IgnoreCase);
+              Regex upperArmRRegex = new("UpperArmR", RegexOptions.IgnoreCase);
+              Regex lowerArmLRegex = new("LowerArmL", RegexOptions.IgnoreCase);
+              Regex lowerArmRRegex = new("LowerArmR", RegexOptions.IgnoreCase);
+              Regex footLRegex = new("FootL", RegexOptions.IgnoreCase);
+              Regex footRRegex = new("FootR", RegexOptions.IgnoreCase);
+
+              if (headRegex.IsMatch(addressable.ToString()))
+              {
+                  headTarget.sharedMesh = addressable;
+              }
+              else if (torsoRegex.IsMatch(addressable.ToString()))
+              {
+                  torsoTarget.sharedMesh = addressable;
+              }
+              else if (handLRegex.IsMatch(addressable.ToString()))
+              {
+                  handLTarget.sharedMesh = addressable;
+              }
+              else if (handRRegex.IsMatch(addressable.ToString()))
+              {
+                  handRTarget.sharedMesh = addressable;
+              }
+              else if (calfLRegex.IsMatch(addressable.ToString()))
+              {
+                  calfLTarget.sharedMesh = addressable;
+              }
+              else if (calfRRegex.IsMatch(addressable.ToString()))
+              {
+                  calfRTarget.sharedMesh = addressable;
+              }
+              else if (thighLRegex.IsMatch(addressable.ToString()))
+              {
+                  thighLTarget.sharedMesh = addressable;
+              }
+              else if (thighRRegex.IsMatch(addressable.ToString()))
+              {
+                  thighRTarget.sharedMesh = addressable;
+              }
+              else if (upperArmLRegex.IsMatch(addressable.ToString()))
+              {
+                  upperArmLTarget.sharedMesh = addressable;
+              }
+              else if (upperArmRRegex.IsMatch(addressable.ToString()))
+              {
+                  upperArmRTarget.sharedMesh = addressable;
+              }
+              else if (lowerArmLRegex.IsMatch(addressable.ToString()))
+              {
+                  lowerArmLTarget.sharedMesh = addressable;
+              }
+              else if (lowerArmRRegex.IsMatch(addressable.ToString()))
+              {
+                  lowerArmRTarget.sharedMesh = addressable;
+              }
+              else if (footLRegex.IsMatch(addressable.ToString()))
+              {
+                  footLTarget.sharedMesh = addressable;
+              }
+              else if (footRRegex.IsMatch(addressable.ToString()))
+              {
+                  footRTarget.sharedMesh = addressable;
+              }
+              else
+              {
+                  Debug.LogError("Addressable does not match any body part");
+              }
+
           }, Addressables.MergeMode.Union, false);
 
         yield return handle;

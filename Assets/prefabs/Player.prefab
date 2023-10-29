@@ -128,21 +128,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19d094f7f4e821459e7303729a68066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headTarget: {fileID: 0}
-  torsoTarget: {fileID: 0}
-  upperArmLTarget: {fileID: 0}
-  upperArmRTarget: {fileID: 0}
-  thighLTarget: {fileID: 0}
-  thighRTarget: {fileID: 0}
-  lowerArmLTarget: {fileID: 0}
-  lowerArmRTarget: {fileID: 0}
-  handLTarget: {fileID: 0}
-  handRTarget: {fileID: 0}
-  footLTarget: {fileID: 0}
-  footRTarget: {fileID: 0}
-  calfLTarget: {fileID: 0}
-  calfRTarget: {fileID: 0}
-  skin: {fileID: 0}
+  headTarget: {fileID: 1482026098982506812}
+  torsoTarget: {fileID: 3647562926344066601}
+  upperArmLTarget: {fileID: 1349793731862660875}
+  upperArmRTarget: {fileID: 8817256485323042103}
+  thighLTarget: {fileID: 6703808653388926161}
+  thighRTarget: {fileID: 6638798766626234937}
+  lowerArmLTarget: {fileID: 1947020492579729779}
+  lowerArmRTarget: {fileID: 8117008064499353311}
+  handLTarget: {fileID: 7750470492718945718}
+  handRTarget: {fileID: 4763577818673420550}
+  footLTarget: {fileID: 7812840315137122356}
+  footRTarget: {fileID: 447858929282265867}
+  calfLTarget: {fileID: 800470762638784354}
+  calfRTarget: {fileID: 1649120284246865373}
   jsonSkin: {fileID: 4900000, guid: ea43ad62915ef904e8ae5e439f123338, type: 3}
 --- !u!1 &248516312377553182
 GameObject:
@@ -1876,7 +1875,6 @@ MonoBehaviour:
   footRTarget: {fileID: 0}
   calfLTarget: {fileID: 0}
   calfRTarget: {fileID: 0}
-  skin: {fileID: 0}
   jsonSkin: {fileID: 0}
 --- !u!1 &6655869293986483025
 GameObject:
